@@ -11,11 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        .bg1{
-            background-color: rgb(196, 253, 253);
+        .bg1 {
+            background-color: rgb(185, 245, 245);
         }
-        .bg2{
-            color: rgb(24, 118, 141);
+
+        .bg2 {
+            color: rgb(24, 108, 129);
         }
     </style>
 </head>
@@ -39,16 +40,14 @@
             </div>
         </div>
         <div class="container mt-5 d-flex justify-content-center">
-            <div class="card" id="cardWeather" style="width: 18rem;">
-            </div>
+            <div class="card" id="cardWeather" style="width: 18rem;"></div>
+        </div>
+    </div>
 
-                </div>
-            </div>
-      
 </body>
 <script>
 
-    function Default(){
+    function Default() {
         var urlDefualt = "http://api.openweathermap.org/data/2.5/weather?q=lat=7.0636417&lon=100.1450612&appid=5bffe8edc190a9ef3c5beef652643e93";
         $.getJSON(urlDefualt)
             .done((data) => {
@@ -58,29 +57,29 @@
                 var place = (data.name);
                 var windSpeed = (data.wind["speed"]);
                 var temp = ((data.main["temp"] - 273));
-                var humid = (data.main["humidity"]+"%");
+                var humid = (data.main["humidity"] + "%");
                 $.each(data.weather[0], (key, value) => {
                     for (let i = 0; i < (data.weather[0]).length; i++) {
                         console.log(value);
                     }
                 })
-                
+
                 var line = "<div id='dataWeather'>";
-                    line += "<img src='https://news.gimyong.com/attachment/image/67747' class='card-img-top' ><div class='card-body'>"
-                    line += "<h5 class='card-title my-3 '>"+ place +"</h5>";
-                    line += "<p class='card-text'>อาทิตย์ขึ้นเวลา : "+ sunrise +"</p>";
-                    line += "<p class='card-text'>อาทิตย์ตกเวลา : "+ sunset +"</p>";
-                    line += "<p class='card-text'>ความเร็วลม : "+ windSpeed +"</p>";
-                    line += "<p class='card-text'>อุณหภูมิ : "+ temp +"</p>";
-                    line += "<p class='card-text'>ความชื้นสัมพัทธ์: "+ humid  + "</p>";
-                    line += "<p class='card-text'>เวลา : "+datetime  +"</p>";
-                    line += "</div>"
+                line += "<img src='https://news.gimyong.com/attachment/image/67747' class='card-img-top' ><div class='card-body'>"
+                line += "<h5 class='card-title my-3 '>" + place + "</h5>";
+                line += "<p class='card-text'>อาทิตย์ขึ้นเวลา : " + sunrise + "</p>";
+                line += "<p class='card-text'>อาทิตย์ตกเวลา : " + sunset + "</p>";
+                line += "<p class='card-text'>ความเร็วลม : " + windSpeed + "</p>";
+                line += "<p class='card-text'>อุณหภูมิ : " + temp + "</p>";
+                line += "<p class='card-text'>ความชื้นสัมพัทธ์: " + humid + "</p>";
+                line += "<p class='card-text'>เวลา : " + datetime + "</p>";
+                line += "</div>"
                 $("#cardWeather").append(line);
             })
             .fail((xhr, status, error) => {
 
             })
-    } 
+    }
 
     function LoadForcast() {
         var x = $("#Latitude").val();
@@ -94,22 +93,22 @@
                 var place = (data.name);
                 var windSpeed = (data.wind["speed"]);
                 var temp = ((data.main["temp"] - 273).toFixed(2));
-                var humid = (data.main["humidity"]+"%");
+                var humid = (data.main["humidity"] + "%");
                 $.each(data.weather[0], (key, value) => {
                     for (let i = 0; i < (data.weather[0]).length; i++) {
-                        console.log(value);                      
+                        console.log(value);
                     }
                 })
                 var line = "<div id='dataWeather'>";
-                    line += "<img src='https://news.gimyong.com/attachment/image/67747' class='card-img-top' ><div class='card-body'>"
-                    line += "<h5 class='card-title my-3'> "+ place +"</h5>";
-                    line += "<p class='card-text'>อาทิตย์ขึ้นเวลา : "+ sunrise +"</p>";
-                    line += "<p class='card-text'>อาทิตย์ตกเวลา : "+ sunset +"</p>";
-                    line += "<p class='card-text'>ความเร็วลม : "+ windSpeed +"</p>";
-                    line += "<p class='card-text'>อุณหภูมิ : "+ temp +"</p>";
-                    line += "<p class='card-text'>ความชื้นสัมพัทธ์ : "+ humid  +"</p>";
-                    line += "<p class='card-text'>เวลา : "+datetime  +"</p>";
-                    line += "</div>"
+                line += "<img src='https://news.gimyong.com/attachment/image/67747' class='card-img-top' ><div class='card-body'>"
+                line += "<h5 class='card-title my-3'> " + place + "</h5>";
+                line += "<p class='card-text'>อาทิตย์ขึ้นเวลา : " + sunrise + "</p>";
+                line += "<p class='card-text'>อาทิตย์ตกเวลา : " + sunset + "</p>";
+                line += "<p class='card-text'>ความเร็วลม : " + windSpeed + "</p>";
+                line += "<p class='card-text'>อุณหภูมิ : " + temp + "</p>";
+                line += "<p class='card-text'>ความชื้นสัมพัทธ์ : " + humid + "</p>";
+                line += "<p class='card-text'>เวลา : " + datetime + "</p>";
+                line += "</div>"
                 $("#cardWeather").append(line);
             })
             .fail((xhr, status, error) => {
